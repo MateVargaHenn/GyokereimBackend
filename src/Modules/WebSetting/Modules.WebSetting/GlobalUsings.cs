@@ -1,0 +1,16 @@
+﻿global using System.Reflection;
+global using Common.Infrastructure.Persistence;
+global using Common.SharedKernel.Common;
+global using FluentValidation;
+global using MediatR;
+global using Microsoft.AspNetCore.Builder;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.AspNetCore.Routing;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
+global using Microsoft.Extensions.Logging;
+global using Modules.WebSetting.Identify;
+global using Modules.WebSetting.Infrastructure.Persistence;
+global using Modules.WebSetting.Infrastructure.Persistence.Seed;

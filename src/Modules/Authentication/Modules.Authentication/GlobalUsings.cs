@@ -1,0 +1,12 @@
+﻿global using System.Reflection;
+global using FluentValidation;
+global using Microsoft.AspNetCore.Identity;
+global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
+global using Modules.Authentication.Application;
+global using Modules.Authentication.Contract.DataTransferObject;
+global using Modules.Authentication.Domain;
+global using Modules.Authentication.Infrastructure.Persistence;

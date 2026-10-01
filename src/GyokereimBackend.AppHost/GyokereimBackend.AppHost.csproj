@@ -1,0 +1,21 @@
+<Project Sdk="Aspire.AppHost.Sdk/13.4.6">
+
+  <ItemGroup>
+    <ProjectReference Include="..\WebApi\WebApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.PostgreSQL" />
+    <PackageReference Include="Aspire.Hosting.RabbitMQ" />
+    <PackageReference Include="Aspire.Hosting.Seq" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>6a53b5a4-ed0e-488e-a660-2fb2c2100f93</UserSecretsId>
+  </PropertyGroup>
+
+</Project>

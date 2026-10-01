@@ -1,0 +1,150 @@
+services:
+  gyokereimbackend.webapi:
+    container_name: gyokereimbackend.webapi
+    image: ${DOCKER_REGISTRY-}gyokereimbackendwebapi
+
+    restart: unless-stopped
+
+    volumes:
+      - ml_models:/app/Models
+      - uploaded_files:/app/uploads
+
+    build:
+      context: .
+      dockerfile: src/WebApi/Dockerfile
+
+    environment:
+      ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT}
+      FRONTEND_URL: ${FRONTEND_URL}
+      ADMIN_FRONTEND_URL: ${ADMIN_FRONTEND_URL}
+
+      ASPNETCORE_HTTP_PORTS: "8080"
+
+      ConnectionStrings__CONNECTION_STRING: ${CONNECTION_STRING}
+      ConnectionStrings__RABBITMQ: ${RABBITMQ_CONNECTION_STRING}
+
+      MEDIATR_LICENSE_KEY: ${MEDIATR_LICENSE_KEY}
+      
+      FileStorage__RootPath: ${FILE_STORAGE_ROOT_PATH}
+
+      Seq__ServerUrl: ${SEQ_SERVER_URL}
+
+      APP__SUPERADMIN__USER: ${APP_SUPERADMIN_USER}
+      APP__SUPERADMIN__PASSWORD: ${APP_SUPERADMIN_PASSWORD}
+      APP__SUPERADMIN__EMAIL: ${APP_SUPERADMIN_EMAIL}
+      APP__ADMIN__USER: ${APP_ADMIN_USER}
+      APP__ADMIN__PASSWORD: ${APP_ADMIN_PASSWORD}
+      APP__ADMIN__EMAIL: ${APP_ADMIN_EMAIL}
+
+    ports:
+      - "127.0.0.1:3000:8080"
+
+    depends_on:
+      gyokereimbackend.database:
+        condition: service_healthy
+
+      gyokereimbackend.rabbitmq:
+        condition: service_healthy
+
+      gyokereimbackend.seq:
+        condition: service_started
+
+
+  gyokereimbackend.database:
+    container_name: gyokereimbackend.database
+    image: postgres:18
+
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+
+    volumes:
+      - postgres_data:/var/lib/postgresql
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
+  gyokereimbackend.seq:
+    container_name: gyokereimbackend.seq
+    image: datalust/seq:latest
+
+    restart: unless-stopped
+
+    environment:
+      ACCEPT_EULA: "Y"
+      SEQ_FIRSTRUN_NOAUTHENTICATION: "true"
+
+    volumes:
+      - seq_data:/var/lib/seq
+
+    # Csak a VPS-ről legyen elérhető.
+    ports:
+      - "127.0.0.1:8081:80"
+
+
+  gyokereimbackend.rabbitmq:
+    container_name: gyokereimbackend.rabbitmq
+    image: rabbitmq:4-management
+
+    restart: unless-stopped
+
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USERNAME}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "rabbitmq-diagnostics",
+          "-q",
+          "ping"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+    # Management UI csak localhostról.
+    ports:
+      - "127.0.0.1:15672:15672"
+
+  gyokereimfrontend:
+    container_name: gyokereimfrontend
+
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+
+    restart: unless-stopped
+
+    environment:
+      NODE_ENV: production
+      PORT: "4000"
+
+    ports:
+      - "127.0.0.1:4000:4000"
+
+    depends_on:
+      - gyokereimbackend.webapi
+
+
+volumes:
+  postgres_data:
+  seq_data:
+  rabbitmq_data:
+  ml_models:
+  uploaded_files:

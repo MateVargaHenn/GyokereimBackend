@@ -1,0 +1,14 @@
+﻿global using System.Reflection;
+global using FluentEmail.Core;
+global using FluentEmail.Core.Models;
+global using FluentEmail.MailKitSmtp;
+global using FluentValidation;
+global using MassTransit;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
+global using Modules.Notification.Application.Abstractions;
+global using Modules.Notification.Configurations;
+global using Modules.Notification.Infrastructure.Email;
+global using Modules.Notification.Infrastructure.Email.Models;
+global using Modules.Notification.Infrastructure.Messaging.Consumers;

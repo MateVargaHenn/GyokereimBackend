@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <None Update="Templates\**\*.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="FluentEmail.Core" />
+    <PackageReference Include="FluentEmail.MailKit" />
+    <PackageReference Include="FluentEmail.Razor" />
+    <PackageReference Include="FluentValidation" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+    <PackageReference Include="MailKit" />
+    <PackageReference Include="MassTransit" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Common.Contracts\Common.Contracts.csproj" />
+    <ProjectReference Include="..\..\File\Modules.File\Modules.File.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Update="Templates\Contact.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\NewOrderNotification.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\OrderConfirmation.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

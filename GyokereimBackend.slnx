@@ -1,1 +1,48 @@
-<Solution />
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/GyokereimBackend.AppHost/GyokereimBackend.AppHost.csproj" />
+    <Project Path="src/WebApi/WebApi.csproj" />
+  </Folder>
+  <Folder Name="/src/Common/">
+    <Project Path="src/Common/Common.Application/Common.Application.csproj" Id="6f7aff32-1da9-43b3-9585-6ac27c5d9d56" />
+    <Project Path="src/Common/Common.Contracts/Common.Contracts.csproj" Id="982c6aa3-8a42-4eb1-945f-22b9f8ecf56b" />
+    <Project Path="src/Common/Common.Infrastructure/Common.Infrastructure.csproj" Id="3c2b6a87-e7d3-4377-91e0-4c8e51f6c914" />
+    <Project Path="src/Common/Common.SharedKernel/Common.SharedKernel.csproj" />
+    <Project Path="src/Common/Common.Tests/Common.Tests.csproj" Id="54a12ce6-4ef1-4747-90ce-a0ea66b3075c" />
+  </Folder>
+  <Folder Name="/src/Modules/" />
+  <Folder Name="/src/Modules/Authentication/">
+    <Project Path="src/Modules/Authentication/Modules.Authentication/Modules.Authentication.csproj" Id="2017ad8f-da07-4f80-a3c1-4f7a6a6712c5" />
+  </Folder>
+  <Folder Name="/src/Modules/Blog/">
+    <Project Path="src/Modules/Blog/Modules.Blog/Modules.Blog.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Chat/">
+    <Project Path="src/Modules/Chat/Modules.Chat.Messages/Modules.Chat.Messages.csproj" Id="cf5a49b3-935f-4033-a9a8-cf3d81cdee96" />
+    <Project Path="src/Modules/Chat/Modules.Chat/Modules.Chat.csproj" Id="aed76688-ba30-4288-ae3b-3b29c2975270" />
+  </Folder>
+  <Folder Name="/src/Modules/Contact/">
+    <Project Path="src/Modules/Contact/Modules.Contact/Modules.Contact.csproj" Id="1c47b0a1-384f-46a8-b92e-02b4850770ba" />
+  </Folder>
+  <Folder Name="/src/Modules/File/">
+    <Project Path="src/Modules/File/Modules.File/Modules.File.csproj" Id="36f63ea6-54f7-4239-b859-19a6a810c78c" />
+  </Folder>
+  <Folder Name="/src/Modules/Notification/">
+    <Project Path="src/Modules/Notification/Modules.Notification/Modules.Notification.csproj" Id="8cbb3e9e-760e-4b3e-8cc8-429b9fcaa4e6" />
+  </Folder>
+  <Folder Name="/src/Modules/Service/">
+    <Project Path="src/Modules/Service/Modules.Service/Modules.Service.csproj" Id="1883bc0b-4d88-4796-990b-e13288dc5703" />
+  </Folder>
+  <Folder Name="/src/Modules/WebSetting/">
+    <Project Path="src/Modules/WebSetting/Modules.WebSetting/Modules.WebSetting.csproj" Id="a631a9df-afa3-4591-a66b-344042688386" />
+  </Folder>
+  <Folder Name="/tools/" />
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
+</Solution>

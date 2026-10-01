@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <UserSecretsId>3d7643e1-c53c-48d2-b512-1575ad86268e</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <DockerfileContext>..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <PreserveCompilationReferences>true</PreserveCompilationReferences>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HtmlToOpenXml.dll" />
+    <PackageReference Include="MailKit" />
+    <PackageReference Include="MassTransit" />
+    <PackageReference Include="MassTransit.Extensions.DependencyInjection" />
+    <PackageReference Include="MassTransit.RabbitMQ" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.ML" />
+    <PackageReference Include="Microsoft.Playwright" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" />
+    <PackageReference Include="Serilog.AspNetCore" />
+    <PackageReference Include="Serilog" />
+    <PackageReference Include="Serilog.Sinks.Seq" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Modules\Authentication\Modules.Authentication\Modules.Authentication.csproj" />
+    <ProjectReference Include="..\Modules\Blog\Modules.Blog\Modules.Blog.csproj" />
+    <ProjectReference Include="..\Modules\Chat\Modules.Chat\Modules.Chat.csproj" />
+    <ProjectReference Include="..\Modules\Contact\Modules.Contact\Modules.Contact.csproj" />
+    <ProjectReference Include="..\Modules\Notification\Modules.Notification\Modules.Notification.csproj" />
+    <ProjectReference Include="..\Modules\WebSetting\Modules.WebSetting\Modules.WebSetting.csproj" />
+    <ProjectReference Include="..\Modules\Service\Modules.Service\Modules.Service.csproj" />
+    <ProjectReference Include="..\Common\Common.Infrastructure\Common.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

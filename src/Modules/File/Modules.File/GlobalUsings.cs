@@ -1,0 +1,16 @@
+﻿global using System.Reflection;
+global using Common.Infrastructure.Persistence;
+global using Common.SharedKernel.Database;
+global using FluentValidation;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
+global using Modules.File.Application;
+global using Modules.File.Contract;
+global using Modules.File.Contract.DataTransferObject;
+global using Modules.File.Infrastructure;
+global using Modules.File.Infrastructure.Persistence;
+global using Microsoft.Extensions.Logging;
+global using Modules.File.Infrastructure.Exceptions;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;

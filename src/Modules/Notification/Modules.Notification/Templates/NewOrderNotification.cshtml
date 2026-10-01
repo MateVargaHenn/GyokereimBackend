@@ -1,0 +1,191 @@
+@model Modules.Notification.Email.Models.OrderNotification
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Új megrendelés érkezett</title>
+</head>
+
+<body style="
+    margin: 0;
+    padding: 0;
+    background-color: #f8f0e3;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #211d19;
+">
+    <table
+        role="presentation"
+        width="100%"
+        cellspacing="0"
+        cellpadding="0"
+        border="0"
+        style="padding: 32px 16px;"
+    >
+        <tr>
+            <td align="center">
+
+                <table
+                    role="presentation"
+                    width="100%"
+                    cellspacing="0"
+                    cellpadding="0"
+                    border="0"
+                    style="
+                        max-width: 640px;
+                        background-color: #ffffff;
+                        border: 1px solid #e5d8c5;
+                        border-radius: 12px;
+                    "
+                >
+                    <tr>
+                        <td style="
+                            padding: 24px 32px;
+                            background-color: #f3e7d5;
+                            border-bottom: 1px solid #e5d8c5;
+                        ">
+                            <h1 style="
+                                margin: 0;
+                                font-size: 22px;
+                            ">
+                                Új megrendelés érkezett
+                            </h1>
+
+                            <p style="
+                                margin: 6px 0 0 0;
+                                color: #6b6258;
+                            ">
+                                Gyökereim
+                            </p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding: 32px;">
+
+                            <h2 style="
+                                margin: 0 0 20px 0;
+                                font-size: 18px;
+                            ">
+                                Megrendelő adatai
+                            </h2>
+
+                            <table
+                                role="presentation"
+                                width="100%"
+                                cellspacing="0"
+                                cellpadding="0"
+                                style="
+                                    background-color: #faf6ef;
+                                    border: 1px solid #eadfce;
+                                    border-radius: 8px;
+                                "
+                            >
+                                <tr>
+                                    <td style="padding: 20px 24px;">
+
+                                        <p style="margin: 8px 0;">
+                                            <strong>Név:</strong>
+                                            @Model.CustomerName
+                                        </p>
+
+                                        <p style="margin: 8px 0;">
+                                            <strong>E-mail:</strong>
+                                            <a href="mailto:@Model.Email">
+                                                @Model.Email
+                                            </a>
+                                        </p>
+
+                                        @if (!string.IsNullOrWhiteSpace(Model.PhoneNumber))
+                                        {
+                                            <p style="margin: 8px 0;">
+                                                <strong>Telefonszám:</strong>
+                                                @Model.PhoneNumber
+                                            </p>
+                                        }
+
+                                    </td>
+                                </tr>
+                            </table>
+
+
+                            <h2 style="
+                                margin: 28px 0 20px 0;
+                                font-size: 18px;
+                            ">
+                                Megrendelt szolgáltatás
+                            </h2>
+
+                            <table
+                                role="presentation"
+                                width="100%"
+                                cellspacing="0"
+                                cellpadding="0"
+                                style="
+                                    background-color: #faf6ef;
+                                    border: 1px solid #eadfce;
+                                    border-radius: 8px;
+                                "
+                            >
+                                <tr>
+                                    <td style="padding: 20px 24px;">
+
+                                        <p style="margin: 8px 0;">
+                                            <strong>Szolgáltatás:</strong>
+                                            @Model.ServiceName
+                                        </p>
+
+                                        <p style="margin: 8px 0;">
+                                            <strong>Ár:</strong>
+                                            @Model.Price.ToString("N0") Ft
+                                        </p>
+
+                                    </td>
+                                </tr>
+                            </table>
+
+
+                            @if (!string.IsNullOrWhiteSpace(Model.Message))
+                            {
+                                <h2 style="
+                                    margin: 28px 0 12px 0;
+                                    font-size: 18px;
+                                ">
+                                    Megjegyzés
+                                </h2>
+
+                                <div style="
+                                    padding: 20px 24px;
+                                    background-color: #faf6ef;
+                                    border: 1px solid #eadfce;
+                                    border-radius: 8px;
+                                    line-height: 1.6;
+                                    white-space: pre-line;
+                                ">
+                                    @Model.Message
+                                </div>
+                            }
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="
+                            padding: 20px 32px;
+                            text-align: center;
+                            font-size: 12px;
+                            color: #6b6258;
+                            background-color: #f3e7d5;
+                        ">
+                            Automatikus értesítés a Gyökereim weboldalról.
+                        </td>
+                    </tr>
+
+                </table>
+
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

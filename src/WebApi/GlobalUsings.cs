@@ -1,0 +1,11 @@
+﻿global using System.Text.Json;
+global using Common.SharedKernel.DomainEvents;
+global using MassTransit;
+global using Modules.Chat;
+global using Modules.Notification;
+global using Modules.Service;
+global using Modules.WebSetting;
+global using Serilog;
+global using WebApi.Handlers;
+global using Common.Infrastructure;
+global using Modules.Contact;

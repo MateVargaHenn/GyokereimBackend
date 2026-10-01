@@ -1,0 +1,10 @@
+﻿global using System.ComponentModel.DataAnnotations;
+global using System.ComponentModel.DataAnnotations.Schema;
+global using System.Diagnostics;
+global using System.Runtime.CompilerServices;
+global using Common.SharedKernel.Common;
+global using FluentValidation;
+global using MediatR;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using Microsoft.Extensions.Logging;
