@@ -47,6 +47,7 @@ internal sealed class EmailNotificationSender(
     string phoneNumber,
     string message,
     int? attachmentId,
+    string topic,
     CancellationToken cancellationToken = default)
     {
         var contactMessage = new ContactMessageNotification
@@ -56,11 +57,18 @@ internal sealed class EmailNotificationSender(
             PhoneNumber = phoneNumber,
             Message = message
         };
+        string subject = topic switch
+        {
+            "package_selection" =>
+                $"Segítség a csomagválasztáshoz - {name}",
+
+            _ => $"Új kapcsolatfelvétel - {name}"
+        };
 
         IFluentEmail fluentEmail = fluentEmailFactory
             .Create()
             .To("info@gyokereim.hu")
-            .Subject($"Új kapcsolatfelvétel - {name}")
+            .Subject(subject)
             .UsingTemplateFromFile(
                 "Templates/Contact.cshtml",
                 contactMessage);

@@ -6,4 +6,5 @@ public sealed record ContactMessageCreatedIntegrationEvent(
     string Email,
     string PhoneNumber,
     string Message,
+    string Topic,
     int? AttachmentId);

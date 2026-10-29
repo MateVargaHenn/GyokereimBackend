@@ -90,7 +90,8 @@ public static class ContactModule
                             request.PhoneNumber,
                             request.Message,
                             attachment,
-                            request.CaptchaToken);
+                            request.CaptchaToken,
+                            request.Topic);
         
         Result result = await sender.Send(
             command,

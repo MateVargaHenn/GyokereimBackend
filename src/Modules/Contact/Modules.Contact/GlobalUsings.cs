@@ -22,6 +22,7 @@ global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Hosting;
 global using Modules.Contact.Application;
+global using Modules.Contact.Domain;
 global using Modules.Contact.Infrastructure.Persistence;
 global using Modules.Contact.Message;
 global using Modules.File.Contract;

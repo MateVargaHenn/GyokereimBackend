@@ -7,4 +7,5 @@ internal sealed record SendContactMessageCommand(string Name,
     string PhoneNumber,
     string Message,
     FileUpload? Attachment,
-    string? CaptchaToken) : ICommand;
+    string? CaptchaToken,
+    string? Topic) : ICommand;

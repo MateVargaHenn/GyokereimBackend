@@ -16,6 +16,7 @@ internal sealed class ContactMessageCreatedIntegrationEventConsumer(INotificatio
             message.PhoneNumber,
             message.Message,
             message.AttachmentId,
+            message.Topic,
             context.CancellationToken);
 
         await context.Publish(

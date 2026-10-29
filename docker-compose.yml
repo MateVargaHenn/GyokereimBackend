@@ -36,6 +36,12 @@ services:
       APP__ADMIN__PASSWORD: ${APP_ADMIN_PASSWORD}
       APP__ADMIN__EMAIL: ${APP_ADMIN_EMAIL}
 
+      Smtp__Host: ${SMTP_HOST}
+      Smtp__Port: ${SMTP_PORT}
+      Smtp__Username: ${SMTP_USERNAME}
+      Smtp__Password: ${SMTP_PASSWORD}
+
+
     ports:
       - "127.0.0.1:3000:8080"
 

@@ -20,6 +20,7 @@ internal sealed class ContactMessageCreatedDomainEventHandler(
                 contactMessage.Email,
                 contactMessage.PhoneNumber,
                 contactMessage.Message,
+                contactMessage.Topic,
                 contactMessage.AttachmentId);
 
         await integrationEventPublisher.PublishAsync(

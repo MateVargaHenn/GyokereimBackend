@@ -16,5 +16,6 @@ public interface INotificationSender
         string phoneNumber,
         string message,
         int? attachmentId,
+        string topic,
         CancellationToken cancellationToken = default);
 }

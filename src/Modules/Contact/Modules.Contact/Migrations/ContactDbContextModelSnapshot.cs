@@ -18,12 +18,12 @@ namespace Modules.Contact.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasDefaultSchema("contact")
-                .HasAnnotation("ProductVersion", "10.0.10")
+                .HasAnnotation("ProductVersion", "10.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("ContactMessage", b =>
+            modelBuilder.Entity("Modules.Contact.Domain.ContactMessage", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -67,6 +67,9 @@ namespace Modules.Contact.Migrations
                     b.Property<int?>("ReplyToId")
                         .HasColumnType("integer");
 
+                    b.Property<string>("Topic")
+                        .HasColumnType("text");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ReplyToId");
@@ -74,9 +77,9 @@ namespace Modules.Contact.Migrations
                     b.ToTable("ContactMessages", "contact");
                 });
 
-            modelBuilder.Entity("ContactMessage", b =>
+            modelBuilder.Entity("Modules.Contact.Domain.ContactMessage", b =>
                 {
-                    b.HasOne("ContactMessage", "Parent")
+                    b.HasOne("Modules.Contact.Domain.ContactMessage", "Parent")
                         .WithMany()
                         .HasForeignKey("ReplyToId")
                         .OnDelete(DeleteBehavior.Restrict);

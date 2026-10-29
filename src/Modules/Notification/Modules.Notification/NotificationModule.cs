@@ -25,21 +25,16 @@ public static class NotificationModule
         "Az SMTP konfiguráció hiányzik.");
 
         builder.Services
-            .AddFluentEmail(
-                smtp.FromEmail,
-                smtp.FromName)
-            .AddRazorRenderer()
-            .AddMailKitSender(
-                new SmtpClientOptions
-                {
-                    Server = smtp.Server,
-                    Port = smtp.Port,
-                    User = smtp.User,
-                    Password = smtp.Password,
-                    RequiresAuthentication =
-                        smtp.RequiresAuthentication,
-                    SocketOptions = MailKit.Security.SecureSocketOptions.SslOnConnect
-                });
+    .AddFluentEmail(smtp.FromEmail, smtp.FromName)
+    .AddRazorRenderer();
+
+        builder.Services.AddScoped<FluentEmail.Core.Interfaces.ISender>(
+            _ => new CompatibleMailKitSender(
+                smtp.Server,
+                smtp.Port,
+                smtp.Username,
+                smtp.Password,
+                smtp.RequiresAuthentication));
 
         builder.Services.AddScoped<
             INotificationSender,

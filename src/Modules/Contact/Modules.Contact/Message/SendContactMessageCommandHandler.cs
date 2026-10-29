@@ -1,7 +1,4 @@
-﻿
-using Modules.File.Contract;
-
-namespace Modules.Contact.Message;
+﻿namespace Modules.Contact.Message;
 
 internal sealed class SendContactMessageCommandHandler(
     ContactDbContext dbContext,
@@ -40,6 +37,7 @@ internal sealed class SendContactMessageCommandHandler(
             request.Email,
             request.PhoneNumber,
             request.Message,
+            request.Topic,
             attachmentId);
 
         dbContext.ContactMessages.Add(contactMessage);

@@ -1,5 +1,7 @@
 ﻿using Modules.Contact.Domain.DomainEvent;
 
+namespace Modules.Contact.Domain;
+
 public sealed class ContactMessage : Entity
 {
     public string Name { get; private set; } = string.Empty;
@@ -12,6 +14,7 @@ public sealed class ContactMessage : Entity
     public bool NotificationSent { get; private set; }
 
     public int? ReplyToId { get; private set; }
+    public string? Topic { get; set; }
     public ContactMessage? Parent { get; private set; }
 
     private ContactMessage()
@@ -23,6 +26,7 @@ public sealed class ContactMessage : Entity
         string email,
         string phoneNumber,
         string message,
+        string? topic,
         int? attachmentId)
     {
         var contactMessage = new ContactMessage
@@ -31,6 +35,7 @@ public sealed class ContactMessage : Entity
             Email = email,
             PhoneNumber = phoneNumber,
             Message = message,
+            Topic = topic,
             AttachmentId = attachmentId,
             NotificationSent = false
         };
